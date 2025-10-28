@@ -45,9 +45,28 @@ public class House extends Asset {
     public void setLotSize(int lotSize) {
         this.lotSize = lotSize;
     }
-
-    @Override
     public double getValue() {
-        return 0;
+        double pricePerSqFt;
+
+        switch (condition) {
+            case 1:
+                pricePerSqFt = 180.0;
+                break;
+            case 2:
+                pricePerSqFt = 130.0;
+                break;
+            case 3:
+                pricePerSqFt = 90.0;
+                break;
+            case 4:
+                pricePerSqFt = 80.0;
+                break;
+            default:
+                pricePerSqFt = 0.0;
+                break;
+        }
+
+        return (pricePerSqFt * squareFoot) + (0.25 * lotSize);
     }
+
 }

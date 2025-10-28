@@ -37,7 +37,32 @@ public class Vehicle extends Asset {
     }
 
     @Override
-    public double getValue(){
-        return 0;
+    public double getValue() {
+        int currentYear = 2025;
+        int age = currentYear - year;
+        double value = 0.0;
+        if (age >= 0 && age <= 3) {
+            // 0-3 years old - 3% reduced value per year
+            value = getOriginalCost() * (1 - (age * 0.03));
+        } else if (age >= 4 && age <= 6) {
+            // 4-6 years old - 6% reduced value per year
+            value = getOriginalCost() * (1 - (age * 0.06));
+        } else if (age >= 7 && age <= 10) {
+            // 7-10 years old - 8% reduced value per year
+            value = getOriginalCost() * (1 - (age * 0.08));
+        } else if (age > 10) {
+            // over 10 years old - $1000.00
+            value = 1000.00;
+        }
+        if (odometer > 100000) {
+            // Reduce by 25% UNLESS it's a Honda or Toyota
+            if (!makeModel.toLowerCase().contains("honda") &&
+                    !makeModel.toLowerCase().contains("toyota")) {
+                value = value * 0.75;
+            }
+        }
+
+        return value;
     }
 }
+
