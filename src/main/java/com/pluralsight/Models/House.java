@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.Models;
 
 public class House extends Asset {
     private String address;
@@ -48,7 +48,7 @@ public class House extends Asset {
     public double getValue() {
         double pricePerSqFt;
 
-        switch (condition) {
+        switch (this.condition) {
             case 1:
                 pricePerSqFt = 180.0;
                 break;
