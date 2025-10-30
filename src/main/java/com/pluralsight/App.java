@@ -3,6 +3,7 @@ package com.pluralsight;
 import com.pluralsight.Models.Asset;
 import com.pluralsight.Models.House;
 import com.pluralsight.Models.Vehicle;
+import com.pluralsight.Models.Cash;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,10 @@ public class App {
         assets.add(new Vehicle("A good car", "Last Month", 25000, "Ford Fusion", 2015, 150000));
         assets.add(new Vehicle("A bad motorcycle", "Last Year", 15000, "Honda Manga", 2005, 1000));
 
+        assets.add(new Cash("Emergency Fund", "January 2020", 5000.00));
+        assets.add(new Cash("Mattress Money", "Last Year", 1500.00));
+        assets.add(new Cash("Safe Deposit Box", "2018", 10000.00));
+
         for (Asset asset : assets) {
             System.out.println(asset.getDescription());
             System.out.println(asset.getOriginalCost());
@@ -29,6 +34,9 @@ public class App {
             else if (asset instanceof Vehicle) {
                 Vehicle vehicle = (Vehicle) asset;
                 System.out.println("Vehicle: " + vehicle.getYear() + " " + vehicle.getMakeModel());
+            }
+            else if (asset instanceof Cash) {
+                System.out.println("Cash Asset (Value stays constant)");
             }
             System.out.println();
 
